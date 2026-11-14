@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nextora — Modern AI Automation & Software Solutions
 
-## Getting Started
+> **Intelligent Automation. Smarter Businesses.**
 
-First, run the development server:
+Nextora is a modern, responsive, high-performance single-page website for an AI technology business specializing in AI-powered business automation, workflow automation, and custom software solutions.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🚀 Key Highlights & Technologies
+
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Library**: [React 18](https://react.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Architecture**: 100% Frontend-Only, lightweight, fast loading, zero backend or database dependency.
+- **Design Aesthetic**: Premium deep-space navy `#060911` with glowing cyan/indigo accents, smooth scrolling, responsive mobile menu, interactive tabs, process timeline, and custom SVG/CSS workflow diagrams (no generic stock photos).
+
+---
+
+## 📁 Project Structure
+
+```text
+nextora-website/
+├── public/
+│   ├── images/
+│   └── icons/
+├── src/
+│   ├── app/
+│   │   ├── fonts/
+│   │   ├── globals.css        # Custom styles, glow borders, scrollbar
+│   │   ├── layout.tsx         # Root layout, metadata & OpenGraph tags
+│   │   ├── not-found.tsx      # Custom 404 page
+│   │   └── page.tsx           # Single-page landing page
+│   ├── components/
+│   │   ├── Navbar.tsx         # Sticky navigation with mobile drawer
+│   │   ├── Hero.tsx           # Hero section with animated AI workflow node visual
+│   │   ├── WhatWeDo.tsx       # Core services cards
+│   │   ├── Solutions.tsx      # Interactive solution tabs & deep dives
+│   │   ├── WhyNextora.tsx     # 4 Core business advantages
+│   │   ├── Process.tsx        # 4-Stage implementation timeline
+│   │   ├── Industries.tsx     # 5 Sector-specific automation applications
+│   │   ├── Contact.tsx        # Inquiries form, mailto trigger, WhatsApp & copy actions
+│   │   └── Footer.tsx         # Brand footer with legal & quick links
+│   └── lib/
+│       └── constants.ts       # Central configuration file for all content & contacts
+├── .env.example
+├── .gitignore
+├── next.config.mjs
+├── package.json
+├── tailwind.config.ts
+├── tsconfig.json
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Centralized Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All site text, contact placeholders, service items, solution capabilities, and navigation links are located in one single file:
 
-## Learn More
+```text
+src/lib/constants.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+When you are ready to update the real business email, WhatsApp number, or social links, simply edit `SITE_CONFIG.contact` in this file:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```typescript
+export const SITE_CONFIG = {
+  name: "Nextora",
+  contact: {
+    email: "contact@nextoratech.com", // update with your real business email
+    whatsappNumber: "+15550192834",    // update with your WhatsApp international number
+    whatsappDisplay: "+1 (555) 019-2834",
+    ...
+  }
+};
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 💻 Local Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 2. Run Local Development Server
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 3. Production Build
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## 🌐 Deployment on Vercel
+
+### Option 1: Automatic Deployment via GitHub (Recommended)
+1. Push this repository to your GitHub account (already prepared).
+2. Go to [vercel.com](https://vercel.com) and log in.
+3. Click **"Add New..."** &rarr; **"Project"**.
+4. Import the `nextora-website` repository.
+5. Keep the default settings (Framework preset: `Next.js`).
+6. Click **Deploy**. Vercel will build and assign you a live `.vercel.app` URL.
+
+### Option 2: Deploy via Vercel CLI
+```bash
+npx vercel
+# Follow prompts to link project and deploy
+npx vercel --prod
+```
+
+---
+
+## 🔗 Custom Domain Setup
+
+Once you purchase your custom domain (e.g., `yourdomain.com`):
+
+1. **Add Domain in Vercel**:
+   - In your Vercel Project Dashboard, navigate to **Settings** &rarr; **Domains**.
+   - Enter your domain (e.g. `yourdomain.com`).
+   - Add both `yourdomain.com` and `www.yourdomain.com` (Vercel will offer to automatically redirect one to the other).
+
+2. **Configure DNS Records at your Domain Registrar** (GoDaddy, Namecheap, Cloudflare, etc.):
+   - **Apex Domain (`@`)**:
+     - Type: `A`
+     - Name / Host: `@`
+     - Value / Points to: `76.76.21.21`
+   - **Subdomain (`www`)**:
+     - Type: `CNAME`
+     - Name / Host: `www`
+     - Value / Points to: `cname.vercel-dns.com`
+
+3. **SSL Certificate**:
+   - Vercel automatically generates and provisions a free SSL certificate via Let's Encrypt once DNS records are verified.
+
+---
+
+## 📄 License & Attribution
+
+&copy; 2026 Nextora. All rights reserved. Built with modern web standards.
