@@ -15,6 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.nextora-business.site"),
   title: SITE_CONFIG.title,
   description: SITE_CONFIG.description,
   keywords: [
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nextora.vercel.app",
+    url: "https://www.nextora-business.site",
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
