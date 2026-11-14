@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import WhatWeDo from "@/components/WhatWeDo";
 import Solutions from "@/components/Solutions";
+import Engineering from "@/components/Engineering";
 import WhyNextora from "@/components/WhyNextora";
 import Process from "@/components/Process";
 import Industries from "@/components/Industries";
@@ -10,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#060911] text-slate-100 flex flex-col">
+    <div className="relative min-h-screen bg-[#030712] text-slate-100 flex flex-col">
       {/* Sticky navigation */}
       <Navbar />
 
@@ -23,6 +24,9 @@ export default function Home() {
 
         {/* Our Solutions */}
         <Solutions />
+
+        {/* Proven Engineering & Founder Leadership */}
+        <Engineering />
 
         {/* Why Choose Nextora */}
         <WhyNextora />

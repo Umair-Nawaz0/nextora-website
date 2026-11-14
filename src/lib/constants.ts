@@ -16,18 +16,21 @@ export interface SolutionItem {
   id: string;
   title: string;
   badge: string;
+  badgeColor: string;
   shortDesc: string;
   fullDesc: string;
   targetAudience: string;
   capabilities: string[];
   metricsOrHighlight: string;
   icon: string;
+  techStack: string[];
 }
 
 export interface BenefitItem {
   title: string;
   description: string;
   icon: string;
+  accent: string;
 }
 
 export interface StepItem {
@@ -45,6 +48,15 @@ export interface IndustryItem {
   icon: string;
 }
 
+export interface CaseStudyItem {
+  title: string;
+  category: string;
+  summary: string;
+  technologies: string[];
+  highlights: string[];
+  githubUrl: string;
+}
+
 export const SITE_CONFIG = {
   name: "Nextora",
   title: "Nextora | AI-Powered Business Automation & Software Solutions",
@@ -54,16 +66,28 @@ export const SITE_CONFIG = {
     "Nextora builds intelligent AI-powered automation solutions that help businesses streamline operations, transform customer experiences, and focus on what matters most.",
   centralMessage:
     "NEXTORA HELPS BUSINESSES WORK SMARTER THROUGH AI, AUTOMATION, AND INTELLIGENT SOFTWARE SOLUTIONS.",
-  
-  // Contact placeholders (as requested in brief: clean, centralized, easy to update)
+
+  founder: {
+    name: "Sardar Umair Nawaz Khan",
+    role: "Founder & Lead AI Engineer",
+    institution: "FAST-NUCES Computer Science",
+    bio: "AI/ML and backend systems engineer specializing in LLM-powered automation workflows, multi-tenant agent architectures, asynchronous REST APIs, and predictive machine learning pipelines.",
+    github: "https://github.com/Umair-Nawaz0",
+    linkedin: "https://www.linkedin.com/in/sardar-umair-nawaz-khan/",
+    avatar: "/images/founder.webp",
+  },
+
+  // Contact Details requested by user
   contact: {
-    email: "contact@nextoratech.com", // placeholder, can be updated anytime
-    isPlaceholderEmail: true,
-    phone: "+1 (555) 019-2834", // placeholder
-    whatsappNumber: "+15550192834", // placeholder for wa.me/
-    whatsappDisplay: "+1 (555) 019-2834",
-    location: "Global Remote / Tech Operations",
-    linkedin: "https://linkedin.com/company/nextora-tech",
+    email: "nextora.business.ai@gmail.com",
+    isPlaceholderEmail: false,
+    phone: "+92 307 8282606",
+    phoneRaw: "+923078282606",
+    whatsappNumber: "923078282606",
+    whatsappDisplay: "+92 307 8282606",
+    location: "Pakistan (Open to Global Remote & Deployments)",
+    linkedin: "https://www.linkedin.com/in/sardar-umair-nawaz-khan/",
+    github: "https://github.com/Umair-Nawaz0",
     instagram: "https://instagram.com/nextora.tech",
   },
 
@@ -71,6 +95,7 @@ export const SITE_CONFIG = {
     { label: "Home", href: "#hero" },
     { label: "Services", href: "#services" },
     { label: "Solutions", href: "#solutions" },
+    { label: "Engineering", href: "#engineering" },
     { label: "Why Nextora", href: "#why-us" },
     { label: "Process", href: "#process" },
     { label: "Industries", href: "#industries" },
@@ -81,43 +106,43 @@ export const SITE_CONFIG = {
     {
       id: "ai-automation",
       title: "AI-Powered Automation",
-      tagline: "Intelligent Operational Systems",
+      tagline: "Autonomous Operational Systems",
       description:
-        "Intelligent systems that handle repetitive business tasks, improve productivity, and reduce manual work with autonomous accuracy.",
+        "Intelligent multi-turn AI systems that handle repetitive business tasks, resolve customer inquiries across WhatsApp and Web, and eliminate operational friction.",
       icon: "Cpu",
       features: [
-        "Repetitive task offloading",
-        "Natural language inquiry handling",
-        "Document & data parsing",
-        "Human-in-the-loop validation",
+        "Repetitive task offloading & 24/7 inquiry handling",
+        "Natural language intent parsing & validation",
+        "Deterministic guardrails & zero hallucination rules",
+        "Dynamic human-in-the-loop escalation gates",
       ],
     },
     {
       id: "workflow-automation",
       title: "Workflow Automation",
-      tagline: "Seamless Multi-App Connectivity",
+      tagline: "Cross-App Orchestration",
       description:
-        "Connect business applications, orchestrate end-to-end processes, and eliminate operational bottlenecks between fragmented software tools.",
+        "Connect fragmented business applications (CRM, Calendars, WhatsApp, Google Workspace, n8n) into unified event-driven pipelines that run autonomously.",
       icon: "Workflow",
       features: [
-        "Cross-platform app integration",
-        "Event-triggered workflows",
-        "Bi-directional data sync",
-        "Automated alerts & status updates",
+        "Automated multi-system event triggers & webhooks",
+        "Bi-directional data synchronization across CRMs",
+        "RFC-5545 calendar invitations & automated alerts",
+        "Sub-5-second automated task completion cycles",
       ],
     },
     {
       id: "custom-software",
       title: "Custom Software Solutions",
-      tagline: "Tailored Engineering",
+      tagline: "Tailored Full-Stack Systems",
       description:
-        "Engineered digital solutions built specifically around your distinct business requirements, customer journeys, and operational hurdles.",
+        "Engineered digital solutions built specifically around your distinct business workflows, combining fast Next.js frontends with robust FastAPI/Node microservices.",
       icon: "Code2",
       features: [
-        "Bespoke internal business tools",
-        "Scalable cloud architecture",
-        "Tailored customer booking portals",
-        "Clean, maintainable codebases",
+        "Modern responsive client-facing web portals",
+        "Scalable asynchronous RESTful microservices",
+        "Optimized relational database schemas (PostgreSQL)",
+        "Containerized Docker setups with automated CI/CD",
       ],
     },
   ] as ServiceItem[],
@@ -126,63 +151,112 @@ export const SITE_CONFIG = {
     {
       id: "ai-assistant",
       title: "AI Appointment Assistant",
-      badge: "Virtual Receptionist",
+      badge: "24/7 Virtual Receptionist",
+      badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/40",
       shortDesc: "An AI-powered 24/7 virtual receptionist for appointment-based businesses.",
       fullDesc:
-        "An intelligent AI receptionist that helps businesses manage customer conversations and appointments across multiple communication channels through one centralized system.",
+        "An intelligent AI receptionist that engages customers across WhatsApp, Instagram, and web chat. It checks real-time calendar availability, books appointments without conflicts, handles rescheduling or cancellations, and dispatches automated reminder notifications.",
       targetAudience: "Dental clinics, aesthetic clinics, salons & consultation practices",
       icon: "CalendarCheck",
-      metricsOrHighlight: "24/7 Instant Responses across WhatsApp, Instagram & Web",
+      metricsOrHighlight: "24/7 Instant Responses & Zero Scheduling Conflicts",
+      techStack: ["Google Gemini AI", "FastAPI", "React 18", "n8n", "PostgreSQL", "Docker"],
       capabilities: [
         "AI-powered multi-turn customer conversations",
-        "WhatsApp & Instagram messaging integration",
-        "Direct website chat widget support",
-        "Real-time appointment booking & scheduling",
+        "WhatsApp & Instagram messaging integrations",
+        "Embeddable website chat widget",
+        "Real-time slot checking and conflict-free booking commits",
         "Automated rescheduling and cancellation handling",
-        "Instant booking confirmations & SMS/WhatsApp reminders",
-        "Centralized conversation dashboard",
-        "Customized to specific business guidelines & policies",
+        "Dynamic RFC-5545 .ics calendar invite generation",
+        "Centralized conversation dashboard & audit logging",
+        "Configured specifically to your business policies",
       ],
     },
     {
       id: "business-workflow",
-      title: "Business Workflow Automation",
-      badge: "Process Orchestration",
+      title: "Autonomous Meeting & Process Engine",
+      badge: "Event-Driven Automation",
+      badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
       shortDesc: "Automate repetitive operational chores and connect isolated business applications.",
       fullDesc:
-        "Streamline day-to-day operations by linking your CRMs, billing platforms, communication channels, and spreadsheets into self-running pipelines.",
-      targetAudience: "Agencies, professional service firms & operational teams",
+        "Eliminate manual operational overhead by linking your inbound leads, scheduling platforms, video conferencing, and client notifications into seamless automated pipelines.",
+      targetAudience: "Agencies, legal practices, real estate & professional service firms",
       icon: "GitBranch",
-      metricsOrHighlight: "Zero manual data re-entry across business apps",
+      metricsOrHighlight: "Sub-5-Second Turnaround & Automated Provisioning",
+      techStack: ["n8n Workflows", "Zoom API", "Google Calendar API", "Gmail API", "Python"],
       capabilities: [
-        "Automated multi-step workflows",
-        "Deep application & SaaS integrations",
-        "Real-time bi-directional data synchronization",
-        "Instant multi-channel operational notifications",
-        "Automated task dispatch & execution",
-        "Continuous business process optimization",
+        "Webhook ingestion from lead forms and ads",
+        "Automatic Zoom conference room provisioning via OAuth",
+        "Automated calendar event distribution and confirmation emails",
+        "Real-time synchronization between CRM, sheets, and databases",
+        "Instant team notifications via Slack or WhatsApp",
+        "Continuous performance monitoring & error handling",
       ],
     },
     {
       id: "custom-ai-agents",
-      title: "Custom AI Agents",
-      badge: "Autonomous Intelligence",
+      title: "Custom Agentic AI Systems",
+      badge: "Autonomous Tool Calling",
+      badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
       shortDesc: "Specialized AI agents designed to analyze, use connected tools, and complete tasks.",
       fullDesc:
-        "Build intelligent autonomous agents that comprehend context, interface with external tools, query internal knowledge bases, and make guided decisions.",
-      targetAudience: "Modern enterprises needing specialized automated problem solvers",
+        "Build autonomous agents with deterministic state machines and tool-calling capabilities. Our agents query private knowledge bases (RAG), extract structured data from unstructured inputs, and execute business actions securely.",
+      targetAudience: "Growing enterprises needing automated decision-making and data pipelines",
       icon: "Bot",
-      metricsOrHighlight: "Action-oriented agents that query tools & execute tasks",
+      metricsOrHighlight: "Action-Oriented AI with Private Knowledge Retrieval",
+      techStack: ["LangChain", "LangGraph", "FastAPI", "Python", "Vector Databases", "Docker"],
       capabilities: [
-        "Context-aware AI decision making",
-        "Secure external API & tool integrations",
-        "End-to-end task execution & workflow triggers",
-        "Internal knowledge base & document retrieval (RAG)",
-        "Custom agentic multi-agent workflows",
-        "Full audit logging and security boundaries",
+        "Context-aware AI decision making with strict guardrails",
+        "Secure external API tool calling & execution",
+        "Document parsing and knowledge base retrieval (RAG)",
+        "Multi-step problem decomposition & task dispatch",
+        "Deterministic state machine architectures",
+        "Comprehensive execution audit logs and telemetry",
       ],
     },
   ] as SolutionItem[],
+
+  // Proven Case Studies directly from Sardar Umair's portfolio
+  caseStudies: [
+    {
+      title: "AI Appointment Assistant & Automation Engine",
+      category: "AI Agents & Systems",
+      summary:
+        "Modular multi-tenant appointment architecture combining a React 18 chat portal with an asynchronous FastAPI backend and an autonomous n8n booking workflow powered by Google Gemini.",
+      technologies: ["FastAPI", "React 18", "TypeScript", "PostgreSQL", "n8n", "Docker", "Gemini AI"],
+      highlights: [
+        "Function-calling tools for real-time slot checking and conflict-free commits",
+        "Dynamic RFC-5545 .ics calendar generation with dual-engine SQL fallback",
+        "Containerized Docker deployment with health-checked microservices",
+      ],
+      githubUrl: "https://github.com/Umair-Nawaz0/appointment-assistant",
+    },
+    {
+      title: "Autonomous AI Meeting Scheduling Agent",
+      category: "Process Automation",
+      summary:
+        "Containerized meeting orchestration pipeline using n8n to ingest webhook payloads, negotiate time slots, and provision video conferences automatically.",
+      technologies: ["Python", "n8n", "Zoom API", "Google Calendar API", "Gmail API", "Docker"],
+      highlights: [
+        "Zoom Server-to-Server OAuth, Google Calendar, and Gmail API orchestration",
+        "Sub-5-second automated turnaround time from inbound trigger to confirmed meeting",
+        "Automated health checks and production-grade resilience",
+      ],
+      githubUrl: "https://github.com/Umair-Nawaz0/meeting-scheduler",
+    },
+    {
+      title: "High-Precision Predictive ML Systems",
+      category: "Machine Learning & Analytics",
+      summary:
+        "Production-grade anomaly detection and customer segmentation engines applying advanced statistical modeling, SMOTE sampling, and hierarchical clustering.",
+      technologies: ["Python", "Scikit-Learn", "PCA", "Hierarchical Clustering", "Pandas"],
+      highlights: [
+        "Standardized 30 high-dimensional feature vectors to avoid data leakage",
+        "Over 90% anomaly recall on severe class imbalance datasets",
+        "Agglomerative Ward-linkage clustering for customer behavioral cohorts",
+      ],
+      githubUrl: "https://github.com/Umair-Nawaz0/svm-credit-card-fraud-detection",
+    },
+  ] as CaseStudyItem[],
 
   benefits: [
     {
@@ -190,24 +264,28 @@ export const SITE_CONFIG = {
       description:
         "Automation crafted specifically around your actual operational bottlenecks and commercial objectives—not generic tech templates.",
       icon: "Target",
+      accent: "from-blue-500 to-indigo-600",
     },
     {
       title: "Intelligent Automation",
       description:
         "Modern AI architectures that simplify complex multi-step tasks, minimize human friction, and drastically accelerate turnaround times.",
       icon: "Sparkles",
+      accent: "from-purple-500 to-pink-600",
     },
     {
       title: "Connected Systems",
       description:
         "Bridge the gap between your customer channels, internal databases, CRMs, and productivity tools into one cohesive ecosystem.",
       icon: "Network",
+      accent: "from-cyan-500 to-blue-600",
     },
     {
       title: "Scalable Solutions",
       description:
         "Robust, clean software architectures engineered to effortlessly expand as your transaction volumes and team requirements grow.",
       icon: "TrendingUp",
+      accent: "from-emerald-500 to-teal-600",
     },
   ] as BenefitItem[],
 
